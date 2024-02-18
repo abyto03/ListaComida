@@ -21,9 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -33,8 +31,6 @@ import com.mexiti.listacomida.data.DataSource
 import com.mexiti.listacomida.model.Platillo
 import com.mexiti.listacomida.ui.theme.ListaComidaTheme
 import com.mexiti.listacomida.ui.theme.md_theme_dark_onSecondary
-import com.mexiti.listacomida.ui.theme.md_theme_dark_onTertiary
-import com.mexiti.listacomida.ui.theme.md_theme_light_onTertiary
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
