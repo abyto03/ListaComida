@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import com.mexiti.listacomida.data.DataSource
 import com.mexiti.listacomida.model.Platillo
 import com.mexiti.listacomida.ui.theme.ListaComidaTheme
-import com.mexiti.listacomida.ui.theme.md_theme_dark_onSecondary
+import com.mexiti.listacomida.ui.theme.onErrorDark
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,15 +59,25 @@ fun MenuApp(){
 
 @Composable
 fun MenuCardList( platilloList:List<Platillo>, modifier: Modifier = Modifier ){
-    LazyColumn( modifier = modifier ){
-        items(platilloList){
-            platillo -> MenuCard(
-            platillo = platillo,
-                modifier= Modifier.padding(10.dp)
-        )
-        }
 
-    }
+        Scaffold(
+            topBar = {
+                MenuTopAppBar()
+            }
+        )
+        {
+
+
+            LazyColumn(contentPadding = it) {
+                items(platilloList) { platillo ->
+                    MenuCard(
+                        platillo = platillo,
+                        modifier = Modifier.padding(10.dp)
+                    )
+                }
+
+            }
+        }
 }
 
 
@@ -96,14 +107,14 @@ fun MenuCard(platillo: Platillo, modifier: Modifier = Modifier){
             ) {
                 Text(
                     text = "Pozole",
-                    style = MaterialTheme.typography.headlineSmall
+                    style = MaterialTheme.typography.bodyLarge
 
                 )
-                Text(text = "MX $100.0 ")
+                Text(text = "MX $100.0 ", style = MaterialTheme.typography.displayMedium)
                 Text(
                     text = "Ahorra hasta el 30%",
-                    fontWeight = FontWeight.Bold,
-                    color = md_theme_dark_onSecondary
+                    color = onErrorDark,
+                    style = MaterialTheme.typography.bodyMedium
                     
                 )
             }
@@ -113,6 +124,11 @@ fun MenuCard(platillo: Platillo, modifier: Modifier = Modifier){
 
     }
 
+
+}
+
+@Composable
+fun MenuTopAppBar( modifier : Modifier = Modifier){
 
 }
 
